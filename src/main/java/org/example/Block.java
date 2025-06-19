@@ -14,10 +14,8 @@ public class Block {
     }
 
     public String calculateHash() {
-        String input = previousHash + Long.toString(timeStamp) + data + Integer.toString(nonce);
+        String input = previousHash + timeStamp + data + nonce;
 
-        StringUtil.applySha256(input);
-
-        return "";
+        return StringUtil.applySha256(input);
     }
 }
