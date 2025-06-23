@@ -18,4 +18,15 @@ public class Block {
 
         return StringUtil.applySha256(input);
     }
+
+    public void mineBlock(int difficulty) {
+        String target = new String(new char[difficulty]).replace('\0', '0');
+
+        do {
+            nonce++;
+            hash = calculateHash();
+        } while(!hash.substring(0, difficulty).equals(target));
+
+        System.out.println("블록 채굴 완료: " + hash);
+    }
 }
