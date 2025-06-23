@@ -3,18 +3,18 @@ package org.example;
 public class Block {
     public String hash;
     public String previousHash;
-    private String data;            // 오리지날: Transaction
+    private final Transaction transaction;
     private long timeStamp;
     private int nonce = 0;          // 정해진 값이 있음
 
-    public Block(String data, String previousHash) {
-        this.data = data;
+    public Block(Transaction transaction, String previousHash) {
+        this.transaction = transaction;
         this.previousHash = previousHash;
         this.timeStamp = System.currentTimeMillis();
     }
 
     public String calculateHash() {
-        String input = previousHash + timeStamp + data + nonce;
+        String input = previousHash + timeStamp + transaction.toString() + nonce;
 
         return StringUtil.applySha256(input);
     }

@@ -8,7 +8,7 @@ public class Blockchain {
     private static final long TARGET_TIME = 10_000;
 
     public static void initialize() {
-        chain.add(new Block("Genesis Block", "0"));
+        chain.add(new Block(new Transaction("0", "h662", 20.0), "0"));
         chain.get(0).mineBlock(difficulty);
     }
 
